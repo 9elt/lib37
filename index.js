@@ -12,7 +12,7 @@ export var jsx = (key, props) => typeof key === "function"
 
 export var Fragment = (props) => props.children;
 
-export var createNode = (props) =>
+var createNode = (props) =>
     typeof props === "string" || typeof props === "number"
         ? window.document.createTextNode(props)
         : !props
