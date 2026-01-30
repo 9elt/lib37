@@ -2,14 +2,8 @@
     "name": "lib37",
     "version": "0.0.1",
     "description": "A better version of document.createElement with support for JSX and async components in 37 LOC",
-    "main": "./index.js",
-    "types": "./index.d.ts",
     "type": "module",
     "exports": {
-        ".": {
-            "import": "./index.js",
-            "types": "./index.d.ts"
-        },
         "./jsx-runtime": {
             "import": "./jsx-runtime.js",
             "types": "./jsx-runtime.d.ts"

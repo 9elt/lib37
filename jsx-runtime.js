@@ -1,1 +1,6 @@
-export { Fragment, jsx, jsx as jsxDEV, jsx as jsxs } from ".";
+export {
+    node as Fragment,
+    create as jsx,
+    create as jsxDEV,
+    create as jsxs
+} from ".";

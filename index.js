@@ -1,18 +1,16 @@
-export var jsx = (key, props) => typeof key === "function"
+export var create = (target, props) => typeof target === "function"
     ? (
-        key = key(props),
-        key instanceof Promise && (key.$loading = props.$loading),
-        key
+        target = target(props),
+        target instanceof Promise && (target.$loading = props.$loading),
+        target
     )
-    : createNode((
-        props.tagName = key,
+    : node((
+        props.tagName = target,
         delete props.$loading,
         props
     ));
 
-export var Fragment = (props) => props.children;
-
-var createNode = (props) =>
+export var node = (props) =>
     typeof props === "string" || typeof props === "number"
         ? window.document.createTextNode(props)
         : !props
@@ -21,18 +19,18 @@ var createNode = (props) =>
                 ? props
                 : props instanceof Promise
                     ? (
-                        props.then((p) => props.replaceWith(createNode(p))),
-                        props = createNode(props.$loading)
+                        props.then((p) => props.replaceWith(node(p))),
+                        props = node(props.$loading)
                     )
-                    : Array.isArray(props)
-                        ? createNode({ tagName: "div", children: props })
-                        : assign(
-                            window.document.createElementNS(
+                    : assign(
+                        props.tagName
+                            ? window.document.createElementNS(
                                 props.namespaceURI || "http://www.w3.org/1999/xhtml",
                                 props.tagName
-                            ),
-                            props
-                        );
+                            )
+                            : window.document.createDocumentFragment(),
+                        props
+                    );
 
 var assign = (on, from) => (
     Object.keys(from).forEach((prop) =>
@@ -53,4 +51,4 @@ var assign = (on, from) => (
 
 var append = (on, children) => Array.isArray(children)
     ? children.forEach((child) => append(on, child))
-    : on.appendChild(createNode(children));
+    : on.appendChild(node(children));
