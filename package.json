@@ -1,7 +1,7 @@
 {
-    "name": "lib37",
+    "name": "@9elt/jsx",
     "version": "0.0.1",
-    "description": "A better version of document.createElement with support for JSX and async components in 37 LOC",
+    "description": "JSX without runtime in 50 LOC",
     "type": "module",
     "exports": {
         "./jsx-runtime": {
@@ -13,10 +13,6 @@
             "types": "./jsx-runtime.d.ts"
         }
     },
-    "scripts": {
-        "test": "echo TODO",
-        "pub": "npm run test && npm publish"
-    },
     "author": "Lorenzo Cicuttin",
     "license": "MIT",
     "keywords": [
@@ -25,6 +21,6 @@
         "jsx"
     ],
     "readme": "./README.md",
-    "homepage": "github:9elt/miniframe",
-    "repository": "github:9elt/miniframe"
+    "homepage": "github:9elt/jsx",
+    "repository": "github:9elt/jsx"
 }
